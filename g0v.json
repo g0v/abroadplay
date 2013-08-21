@@ -1,0 +1,39 @@
+{
+  "author": "bertwang",
+  "contributors": [
+    "bertwang"
+  ],
+  "status": "alpha",
+  "name": "abroadplay",
+  "name_zh": "公務員出國考察追蹤網",
+  "description": "tracking abroad - stroke, the number",
+  "description_zh": "追蹤公務員出國考察的-行程、人數",
+  "document": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "licenses": [
+    {
+      "type": ""
+    }
+  ],
+  "keywords": [
+    "abroad"
+  ],
+  "audience": [
+    "public"
+  ],
+  "products": [
+    "website"
+  ],
+  "projects": [
+    "abroadplay"
+  ],
+  "thumbnail": "",
+  "needs": [
+    "designer",
+    "programmer",
+    "writer"
+  ]
+}
