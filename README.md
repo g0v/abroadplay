@@ -6,7 +6,7 @@
 追蹤公務員出國考察的預算、行程、人數。
 
 ##技術資訊##
-- PHP Framework: CodeIgniter 2.1.3
+- PHP Framework: CodeIgniter 2.1.4
 - DB: MySQL
 
 ##使用方式##
