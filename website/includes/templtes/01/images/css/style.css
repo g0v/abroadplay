@@ -1,3 +1,50 @@
+
+/*
+This was made by Jo‹o Sardinha
+Visit me at http://johnsardine.com/
+
+The table style doesnt contain images, it contains gradients for browsers who support them as well as round corners and drop shadows.
+
+It has been tested in all major browsers.
+
+This table style is based on Simple Little Table By Orman Clark,
+you can download a PSD version of this at his website, PremiumPixels.
+http://www.premiumpixels.com/simple-little-table-psd/
+
+PLEASE CONTINUE READING AS THIS CONTAINS IMPORTANT NOTES
+
+*/
+
+/*
+Im reseting this style for optimal view using Eric Meyer's CSS Reset - http://meyerweb.com/eric/tools/css/reset/
+------------------------------------------------------------------ */
+body, html  { height: 100%; }
+html, body, div, span, applet, object, iframe,
+/*h1, h2, h3, h4, h5, h6,*/ p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+:focus { outline: 0; }
+del { text-decoration: line-through; }
+table {border-spacing: 0; } /* IMPORTANT, I REMOVED border-collapse: collapse; FROM THIS LINE IN ORDER TO MAKE THE OUTER BORDER RADIUS WORK */
+
+
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 @font-face {
 	font-weight: normal;
@@ -13,7 +60,6 @@
 body {
 	background: #34495e;
 	color: #fff;
-	font-weight: 300;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
@@ -68,25 +114,12 @@ a:hover, a:focus {
 /* To Navigation Style */
 .codrops-top {
 	width: 100%;
+	height: 35px;
 	background: #91cfa1;
 	background: rgba(255, 255, 255, 0.1);
 	text-transform: uppercase;
-	font-size: 0.69em;
-	line-height: 2.2;
 }
 
-.codrops-top a {
-	display: inline-block;
-	padding: 0 1em;
-	color: #fff;
-	text-decoration: none;
-	letter-spacing: 0.1em;
-}
-
-.codrops-top a:hover {
-	background: rgba(255,255,255,0.95);
-	color: #333;
-}
 
 .codrops-top span.right {
 	float: right;
@@ -145,7 +178,7 @@ a:hover, a:focus {
 }
 
 .content {
-	padding: 4em 2em;
+	padding: 1em;
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -170,22 +203,28 @@ a:hover, a:focus {
 	line-height: 1.5;
 }
 
-.info {
-	text-align: center;
-	font-size: 1.5em;
-	margin-top: 3em;
-	clear: both;
-	padding-top: 3em;
-	color: rgba(255,255,255,0.5);
-}
 
-.info a {
-	font-weight: 700;
+
+.menu-trigger {
+	position: relative;
+	padding-left: 50px;
 	font-size: 0.9em;
 }
 
-.info a:hover {
-	color: #336ca6;
+.menu-trigger:before {
+	position: absolute;
+	top: 2px;
+	left: 0;
+	width: 40px;
+	height: 6px;
+	background: #fff;
+	box-shadow: 0 6px #34495e, 0 12px #fff, 0 18px #34495e, 0 24px #fff;
+	content: '';
+}
+
+.copyrights {
+	margin: 0 auto;
+	text-align: center;
 }
 
 @media screen and (max-width: 69em) {
@@ -195,6 +234,8 @@ a:hover, a:focus {
 		padding: 1em;
 	}
 }
+
+
 
 @media screen and (max-width: 25em) {
 
