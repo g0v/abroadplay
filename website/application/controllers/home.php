@@ -4,7 +4,7 @@ class Home extends CI_Controller
 {
 	public function index()
 	{
-		$data['title'] = 'test'; //第一個字母大寫
+		$data['title'] = '公務員出國考察追蹤網';
 		$this->load->view('templates/header',$data);
 		$this->load->view('index');
 		$this->load->view('templates/footer');

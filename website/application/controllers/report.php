@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Report extends CI_Controller {
-
+class Report extends CI_Controller
+{
 	public function __construct()
 	{
 		parent::__construct();
@@ -10,16 +10,19 @@ class Report extends CI_Controller {
 
 	public function index()
 	{
-		$this->showlist(1);
+		$this->page(1);
 	}
 	
-	public function showlist($page)
+	public function page($page=1)
 	{
-		$data['list'] = $this->report_model->get_list($page);
-		
-		//print_r($data['list']);exit();
 		$data['title'] = '公務員出國考察追蹤網';
-	
+		$data['list'] = $this->report_model->get_list($page);
+		//print_r($data['list']);exit();
+		$this->load->library('pagination');
+		$config['total_rows'] = $this->report_model->get_count();
+		$this->pagination->initialize($config);
+		$data['pageList'] = $this->pagination->create_links();		
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('report/list', $data);
 		$this->load->view('templates/footer');
@@ -27,14 +30,14 @@ class Report extends CI_Controller {
 
 	public function view($id)
 	{
-		$data['report_item'] = $this->report_model->get_report($id);
+		$data['item'] = $this->report_model->get_report($id);
 	
-		if (empty($data['report_item']))
+		if (empty($data['item']))
 		{
 			show_404();
 		}
 	
-		$data['title'] = $data['report_item']['title'];
+		$data['title'] = $data['item']['sysid'].'-'.$data['item']['reportName'];
 	
 		$this->load->view('templates/header', $data);
 		$this->load->view('report/view', $data);
