@@ -35,14 +35,31 @@ class Report_model extends CI_Model
 			return;
 		}
 		
-		$sql = "SELECT report.*,authority.name as authority FROM report LEFT JOIN authority on report.authority=authority.aId where report.id=? ";		
+		$sql = "SELECT report.*,a1.name as authority,a2.name as scId,a3.name as pcId,a4.name as aCategory FROM report
+		LEFT JOIN authority a1 on report.authority=a1.aId
+		LEFT JOIN authority a2 on report.scId=a2.aId
+		LEFT JOIN authority a3 on report.pcId=a3.aId
+		LEFT JOIN authority a4 on report.aCategory=a4.aId
+		where report.id=? ";		
 		$query = $this->db->query($sql, array($id));
 		$row = $query->row_array();
 		
+		$sql = "SELECT a1.name FROM country
+		LEFT JOIN authority a1 on country.aId=a1.aId
+		where country.rId=?";
+		$query = $this->db->query($sql, array($id));
+		$row['country'] = $query->result();
 		
-		$scId = $row['scId'];
-		$pcId = $row['pcId'];
-		$aCategory = $row['aCategory'];
+		$sql = "SELECT abroad.*,a1.name as agencies,a2.name as units FROM abroad
+		LEFT JOIN authority a1 on abroad.agencies=a1.aId
+		LEFT JOIN authority a2 on abroad.units=a2.aId
+		where abroad.rId=?";
+		$query = $this->db->query($sql, array($id));
+		$row['abroad'] = $query->result();		
+
+		$sql = "SELECT * FROM file where rId=?";
+		$query = $this->db->query($sql, array($id));
+		$row['file'] = $query->result();
 		
 		return $row;
 	}
