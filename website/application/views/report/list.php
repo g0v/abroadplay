@@ -6,8 +6,8 @@
         <h1>公務員出國考察追蹤網<span>追蹤公務員出國考察的、行程、人數</span></h1>
     </a>
 </header>
-<form class="form-wrapper cf">
-    <input type="text" placeholder="輸入查詢關鍵字..." required>
+<form class="form-wrapper cf" action="/abroadplay/report/search/" method="post">
+    <input type="text" placeholder="輸入查詢關鍵字..." name="key" value="<?=$key?>" required>
     <button type="submit">Search</button>
 </form>  
 <?=$pageList?>

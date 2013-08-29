@@ -4,6 +4,7 @@ class Home extends CI_Controller
 {
 	public function index()
 	{
+		$this->load->helper('url');
 		$data['title'] = '公務員出國考察追蹤網';
 		$this->load->view('templates/header',$data);
 		$this->load->view('index');

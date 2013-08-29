@@ -57,7 +57,7 @@ $(function(){
         <th >報告名稱</th>
         <td><?=$item['reportName']?></td>
     </tr>
-    <?if(count($item['file'])>0){?>
+    <?php if(count($item['file'])>0):?>
     <tr>
         <th >電子全文檔</th>
         <td>
@@ -68,7 +68,7 @@ $(function(){
             </ul>
         </td>
     </tr>
-    <?}?>
+    <?php endif; ?>
     <tr>
         <th >報告日期</th>
         <td><?=$item['reportDate']?></td>
@@ -107,12 +107,12 @@ $(function(){
         <th >關鍵詞</th>
         <td><?=$item['keyword']?></td>
     </tr>
-    <? if($item['remark']){?>
+    <? if($item['remark']):?>
     <tr>
         <th >備註</th>
         <td><?=$item['remark']?></td>
     </tr>
-    <? } ?>
+    <?php endif; ?>
 </table>
 
 <table cellspacing='0' >
@@ -121,7 +121,7 @@ $(function(){
         <th width="15%">計畫主辦機關</th>
         <td><?=$item['authority']?></td>
     </tr>
-    <?if(count($item['abroad'])>0){?>
+    <?if(count($item['abroad'])>0):?>
     <tr>
         <th >出國人員</th>
         <td>
@@ -145,16 +145,16 @@ $(function(){
         </table>                        
         </td>
     </tr>
-    <?}?>
+    <?php endif ?>  
 </table>
 
 <table cellspacing='0' >
-    <? if($item['report']) {?>
+    <? if($item['report']):?>
     <tr><th ><center>報告內容摘要</center></th></tr>
     <tr>
         <td><?=$item['report']?></td>
     </tr>
-    <? } ?>
+    <?php endif; ?>
     <tr>
         <td>前往原始報告頁面：<a href="<?=$item['source']?>" target="_blank"><?=$item['source']?></a></td>
     </tr>    

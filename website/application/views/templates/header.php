@@ -8,16 +8,16 @@
     <meta property="og:description" content="" />
     <title><?php echo $title ?></title>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-    <link rel="stylesheet" type="text/css" href="/abroadplay/includes/pushMenu/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="/abroadplay/includes/pushMenu/css/icons.css" />
-    <link rel="stylesheet" type="text/css" href="/abroadplay/includes/pushMenu/css/component.css" />
-    <link rel="stylesheet" type="text/css" href="/abroadplay/includes/templtes/01/images/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>includes/pushMenu/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>includes/pushMenu/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>includes/pushMenu/css/component.css" />
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>includes/templtes/01/images/css/style.css" />
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>    
-    <script type="text/javascript" src="/abroadplay/includes/pushMenu/js/modernizr.custom.js"></script>
-    <script type="text/javascript" src="/abroadplay/includes/pushMenu/js/classie.js"></script>
-    <script type="text/javascript" src="/abroadplay/includes/pushMenu/js/mlpushmenu.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>includes/pushMenu/js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>includes/pushMenu/js/classie.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>includes/pushMenu/js/mlpushmenu.js"></script>
 </head>
 <body>
 <div class="container">
@@ -40,7 +40,7 @@
                                                                     <h2>Mobile Phones</h2>
                                                                     <a class="mp-back" href="#">back</a>
                                                                     <ul>
-                                                                        <li><a href="/abroadplay/report/">清單</a></li>
+                                                                        <li><a href="<?=base_url()?>report/">清單</a></li>
                                                                     </ul>
                                                             </div>
                                                         </li>
@@ -58,7 +58,7 @@
                                                 </div>
                                         </li>
                                         <li class="icon icon-arrow-left">
-                                                <a class="icon icon-shop" href="/abroadplay/report/">中央政府</a>                                            
+                                                <a class="icon icon-shop" href="<?=base_url()?>report/">中央政府</a>                                            
                                         </li>
                                         <li><a class="icon icon-photo" href="#">地方政府</a></li>
                                          <li class="icon icon-arrow-left">

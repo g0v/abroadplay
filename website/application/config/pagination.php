@@ -1,7 +1,4 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
-$arr = explode("page",$_SERVER["REQUEST_URI"]);
-$config['base_url'] = "http://".$_SERVER["SERVER_NAME"].$arr[0].'page/';
 $config['per_page'] = 50; 
 //下面是分頁參數列表，您可以依照個人喜好設定參數，並且設定您喜歡的顯示效果。
 //$config['uri_segment'] = 1;
@@ -10,8 +7,10 @@ $config['num_links'] = 4;
 //放在您目前所在頁數前面跟後面所顯示的分頁數量。舉例來說，參數設定2，就會在前面跟後面兩邊多加兩個頁數，如同此頁最頂端的例子所顯示
 $config['use_page_numbers'] = TRUE;
 //預設會在 URI 顯示你要分頁項目的索引編號，而不是頁數。如果你比較喜歡使用頁數，將這個值設定為 TRUE 。
-//$config['page_query_string'] = TRUE;
-
+$config['page_query_string'] = FALSE;
+//請注意 "per_page" 是預設的分頁變數字串，然而您可以利用設定
+$config['query_string_segment'] = 'page';
+//來改變您要的變數字串。
 /*
     <div class="pagination quotes">
     <ul>

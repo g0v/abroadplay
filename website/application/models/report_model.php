@@ -2,28 +2,74 @@
 
 class Report_model extends CI_Model
 {
+	public $count;
+	
 	public function __construct()
 	{
 		$this->load->database();
+		$this->load->library('session');	
 	}
 
 	//取得資料物件
 	public function get_count()
 	{
-		$sql = "SELECT count(*) counts FROM report";
-		$query = $this->db->query($sql);		
-		$row = $query->row_array();
-		return $row['counts'];
+		return $this->count;
 	}
 	
 	//取得資料列表
 	public function get_list($page = 1,$limit = 50)
 	{
+		$this->db->from('report');
+		$this->count = $this->db->count_all_results();
+		
 		$start = ($page-1)*$limit;
-		$sql = "SELECT report.*,authority.name as authority FROM report LEFT JOIN authority on report.authority=authority.aId order by report.reportDate desc LIMIT ? , ?";
-		$query = $this->db->query($sql, array($start, $limit));		
+		$this->db->select('report.*,authority.name as authority');
+		$this->db->from('report');
+		$this->db->join('authority', 'report.authority=authority.aId');
+		$this->db->order_by('report.reportDate','desc');
+		$this->db->limit($limit,$start);
+		$query = $this->db->get();
+		
 		return $query->result();
 	}
+
+	//取得搜索資料列表
+	public function get_search($key = null,$page = 1,$limit = 50)
+	{
+		
+		$this->db->select('report.*,authority.name as authority');
+		$this->db->from('report');
+		$this->db->join('authority', 'report.authority=authority.aId');
+		$this->db->like('report.name',$key);
+		$this->db->or_like('report.sysid',$key);
+		$this->db->or_like('report.keyword',$key);
+		$this->db->or_like('report.report',$key);
+		$this->db->or_like('report.periodStart',$key);
+		$this->db->or_like('report.periodEnd',$key);
+		$this->db->or_like('authority.name',$key);
+		$this->count = $this->db->count_all_results();
+
+		//$query = $this->db->query($sql,array($key));		
+		//$row = $query->row_array();
+		//$this->count = $row['counts'];
+		
+		$start = ($page-1)*$limit;
+		$this->db->select('report.*,authority.name as authority');
+		$this->db->from('report');
+		$this->db->join('authority', 'report.authority=authority.aId');
+		$this->db->like('report.name',$key);
+		$this->db->or_like('report.sysid',$key);
+		$this->db->or_like('report.keyword',$key);
+		$this->db->or_like('report.report',$key);
+		$this->db->or_like('report.periodStart',$key);
+		$this->db->or_like('report.periodEnd',$key);
+		$this->db->or_like('authority.name',$key);
+		$this->db->order_by('report.reportDate','desc');
+		$this->db->limit($limit,$start);
+		$query = $this->db->get();
+		
+		return $query->result();
+	}	
 	
 	//取得資料物件	
 	public function get_report($id = FALSE)
@@ -63,4 +109,23 @@ class Report_model extends CI_Model
 		
 		return $row;
 	}
+	
+	public function searchterm_handler($searchterm)
+	{
+	    if($searchterm)
+	    {
+		$this->session->set_userdata('searchterm', $searchterm);
+		return $searchterm;
+	    }
+	    elseif($this->session->userdata('searchterm'))
+	    {
+		$searchterm = $this->session->userdata('searchterm');
+		return $searchterm;
+	    }
+	    else
+	    {
+		$searchterm ="";
+		return $searchterm;
+	    }
+	}	
 }
