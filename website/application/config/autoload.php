@@ -82,7 +82,6 @@ $autoload['helper'] = array();
 
 $autoload['config'] = array();
 
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Language files

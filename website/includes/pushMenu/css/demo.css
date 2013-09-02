@@ -5,9 +5,9 @@
 	font-family: 'codropsicons';
 	src:url('../fonts/codropsicons/codropsicons.eot');
 	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
-		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
-		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+	url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+	url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+	url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 }
 
 body {
