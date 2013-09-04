@@ -45,7 +45,7 @@
 | the active record class
 */
 
-$url=parse_url(getenv("mysql://dqFluPMXl3M2Dydm:zu55EmpeWO66NauQ@210.65.11.197/user_hualien-fei-579973"));
+$url=getenv("mysql://dqFluPMXl3M2Dydm:zu55EmpeWO66NauQ@210.65.11.197/user_hualien-fei-579973");
 print_r($url);
 exit();
 
