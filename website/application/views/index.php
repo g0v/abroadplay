@@ -1,5 +1,5 @@
 <header class="codrops-header">
-    <a href="/abroadplay/" title="公務員出國考察追蹤網-Home">
+    <a href="<?=base_url()?>" title="公務員出國考察追蹤網-Home">
 	<h1>公務員出國考察追蹤網<span>追蹤公務員出國考察的、行程、人數</span></h1>
     </a>
 </header>
