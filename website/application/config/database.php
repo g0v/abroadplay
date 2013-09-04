@@ -44,7 +44,7 @@
 | The $active_record variables lets you determine whether or not to load
 | the active record class
 */
-
+print_r(getenv('mysql://dqFluPMXl3M2Dydm:zu55EmpeWO66NauQ@210.65.11.197/user_hualien-fei-579973'));
 $url=putenv("mysql://dqFluPMXl3M2Dydm:zu55EmpeWO66NauQ@210.65.11.197/user_hualien-fei-579973");
 print_r($url);
 exit();
