@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://192.168.1.104/abroadplay/';
+$config['base_url']	= 'http://hualien-fei-579973.middle2.me/website/';
 
 /*
 |--------------------------------------------------------------------------

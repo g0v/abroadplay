@@ -45,13 +45,19 @@
 | the active record class
 */
 
+$url=parse_url(getenv("mysql://dqFluPMXl3M2Dydm:zu55EmpeWO66NauQ@210.65.11.197/user_hualien-fei-579973"));
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"],1);
+
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '123456';
-$db['default']['database'] = 'abroadplay';
+$db['default']['hostname'] = ($server)?$server:'localhost';
+$db['default']['username'] = ($username)?$username:'root';
+$db['default']['password'] = ($password)?$password:'123456';
+$db['default']['database'] = ($db)?$db:'abroadplay';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
