@@ -47,10 +47,13 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '210.65.11.197';
-$db['default']['username'] = 'dqFluPMXl3M2Dydm';
-$db['default']['password'] = 'zu55EmpeWO66NauQ';
-$db['default']['database'] = 'user_hualien-fei-579973';
+if (!preg_match('#mysql://([^:]*):([^@]*)@([^/]*)/(.*)#', strval(getenv('DATABASE_URL')), $matches)) {
+    die('mysql only');
+}
+$db['default']['hostname'] = $matches[2];
+$db['default']['username'] = $matches[0];
+$db['default']['password'] = $matches[1];
+$db['default']['database'] = $matches[3];
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
