@@ -54,7 +54,8 @@ class Report extends CI_Controller
 			$data['page'] = $page;
 			$this->load->view('templates/header', $data);
 			$this->load->view('report/list', $data);
-			$this->load->view('templates/footer');		    
+			$this->load->view('templates/footer');
+			//$this->output->cache(60);
 		}		
 		catch (Exception $err)
 		{

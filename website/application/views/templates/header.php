@@ -18,6 +18,7 @@
     <script type="text/javascript" src="<?=base_url()?>includes/pushMenu/js/modernizr.custom.js"></script>
     <script type="text/javascript" src="<?=base_url()?>includes/pushMenu/js/classie.js"></script>
     <script type="text/javascript" src="<?=base_url()?>includes/pushMenu/js/mlpushmenu.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
 <body>
 <div class="container">
@@ -76,7 +77,7 @@
                                                         </ul>
                                                 </div>
                                         </li>                                       
-                                        <li><a class="icon icon-wallet" href="#">地圖顯示</a></li>
+                                        <li><a class="icon icon-wallet" href="<?=base_url()?>timeline/">地圖顯示</a></li>
                                 </ul>
                                         
                         </div>

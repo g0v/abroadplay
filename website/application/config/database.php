@@ -44,23 +44,13 @@
 | The $active_record variables lets you determine whether or not to load
 | the active record class
 */
-
-$url=putenv("mysql://dqFluPMXl3M2Dydm:zu55EmpeWO66NauQ@210.65.11.197/user_hualien-fei-579973");
-print_r($url);
-exit();
-
-$server = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$db = substr($url["path"],1);
-
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = ($server)?$server:'localhost';
-$db['default']['username'] = ($username)?$username:'root';
-$db['default']['password'] = ($password)?$password:'123456';
-$db['default']['database'] = ($db)?$db:'abroadplay';
+$db['default']['hostname'] = '210.65.11.197';
+$db['default']['username'] = 'dqFluPMXl3M2Dydm';
+$db['default']['password'] = 'zu55EmpeWO66NauQ';
+$db['default']['database'] = 'user_hualien-fei-579973';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
