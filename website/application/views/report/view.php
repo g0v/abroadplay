@@ -1,13 +1,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
-<<<<<<< HEAD
 <script type="text/javascript" src="<?=base_url()?>includes/mapper.js"></script>
-=======
-<<<<<<< HEAD
-<script type="text/javascript" src="<?=base_url()?>includes/mapper.js"></script>
-=======
-<script type="text/javascript" src="/abroadplay/includes/mapper.js"></script>
->>>>>>> 7fa6ab5d7a7821fa3ff5a4bacd13cc139a462364
->>>>>>> d856680eed0e9b956232ea3a2da0722ce7a313af
+<link rel="stylesheet" type="text/css" href="<?=base_url()?>includes/templtes/01/images/css/table.css" />
 <script type="text/javascript">
 <!--
 $(function(){
@@ -42,15 +35,7 @@ $(function(){
 </div>
 
 
-<<<<<<< HEAD
-<link rel="stylesheet" type="text/css" href="<?=base_url()?>includes/templtes/01/images/css/table.css" />
-=======
-<<<<<<< HEAD
-<link rel="stylesheet" type="text/css" href="<?=base_url()?>includes/templtes/01/images/css/table.css" />
-=======
-<link rel="stylesheet" type="text/css" href="/abroadplay/includes/templtes/01/images/css/table.css" />
->>>>>>> 7fa6ab5d7a7821fa3ff5a4bacd13cc139a462364
->>>>>>> d856680eed0e9b956232ea3a2da0722ce7a313af
+
 <table cellspacing='0'>
     <tr><th colspan="2"><center>基本資料</center></th></tr>
     <tr>

@@ -54,6 +54,7 @@ $db['default']['hostname'] = $matches[2];
 $db['default']['username'] = $matches[0];
 $db['default']['password'] = $matches[1];
 $db['default']['database'] = $matches[3];
+
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
