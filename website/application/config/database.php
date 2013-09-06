@@ -50,11 +50,14 @@ $active_record = TRUE;
 if (!preg_match('#mysql://([^:]*):([^@]*)@([^/]*)/(.*)#', strval(getenv('DATABASE_URL')), $matches)) {
     die('mysql only');
 }
+
+print_r($matches);
+
 $db['default']['hostname'] = $matches[2];
 $db['default']['username'] = $matches[0];
 $db['default']['password'] = $matches[1];
 $db['default']['database'] = $matches[3];
-
+exit();
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
