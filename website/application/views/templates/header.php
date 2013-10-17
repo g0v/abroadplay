@@ -72,7 +72,7 @@
                                                         </ul>
                                                 </div>
                                         </li>                                       
-                                        <li><a class="icon icon-wallet" href="<?=base_url()?>timeline/">地圖顯示</a></li>
+                                        <li><a class="icon icon-wallet" href="<?=base_url()?>timeline/">時間查找</a></li>
                                 </ul>
                                         
                         </div>
