@@ -15,7 +15,7 @@ class Report extends CI_Controller
 	
 	public function search($page=1)
 	{
-		echo 123;exit;
+		//echo 123;exit;
 		
 		$this->load->library('pagination');
 		$this->load->library('app/paginationlib');
