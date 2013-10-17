@@ -15,8 +15,24 @@ class Report extends CI_Controller
 	
 	public function search($page=1)
 	{
+		echo 123;exit;
+		
 		$this->load->library('pagination');
 		$this->load->library('app/paginationlib');
+		// This is the last name from the form
+		$key =	$this->report_model->searchterm_handler($this->input->get_post('key', TRUE));
+		
+		$data['title'] = '公務員出國考察追蹤網';
+		
+		$data['key'] = "{$key}";
+		$data['list'] = $this->report_model->get_search($key,$page);
+		$this->paginationlib->initPagination("report/search",$this->report_model->get_count());
+		$data['pageList']   = $this->pagination->create_links();		
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('report/list', $data);
+		$this->load->view('templates/footer');	 		
+		/*
 		try
 		{
 			// This is the last name from the form
@@ -32,12 +48,13 @@ class Report extends CI_Controller
 			$this->load->view('templates/header', $data);
 			$this->load->view('report/list', $data);
 			$this->load->view('templates/footer');	    
-		}		
+		}
 		catch (Exception $err)
 		{
 		    log_message("error", $err->getMessage());
 		    return show_error($err->getMessage());
 		}
+		*/
 	}
 
 	public function lists($page=1)
