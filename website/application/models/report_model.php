@@ -110,6 +110,33 @@ class Report_model extends CI_Model
 		return $row;
 	}
 	
+	//取得搜索資料列表
+	public function get_datelimit($Dfrom = null,$Dto = null,$page = 1,$limit = 50)
+	{
+		$this->db->select('report.*,authority.name as authority');
+		$this->db->from('report');
+		$this->db->join('authority', 'report.authority=authority.aId');
+		$this->db->where('report.periodStart >=',$Dfrom);
+		$this->db->where('report.periodEnd <=',$Dto);
+		$this->count = $this->db->count_all_results();
+
+		//$query = $this->db->query($sql,array($key));		
+		//$row = $query->row_array();
+		//$this->count = $row['counts'];
+		
+		$start = ($page-1)*$limit;
+		$this->db->select('report.*,authority.name as authority');
+		$this->db->from('report');
+		$this->db->join('authority', 'report.authority=authority.aId');
+		$this->db->where('report.periodStart >=',$Dfrom);
+		$this->db->where('report.periodEnd <=',$Dto);
+		$this->db->order_by('report.reportDate','desc');
+		$this->db->limit($limit,$start);
+		$query = $this->db->get();
+		
+		return $query->result();
+	}	
+
 	public function searchterm_handler($searchterm)
 	{
 	    if($searchterm)
