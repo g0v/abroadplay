@@ -137,16 +137,16 @@ class Report_model extends CI_Model
 		return $query->result();
 	}	
 
-	public function searchterm_handler($searchterm)
+	public function searchterm_handler($searchterm,$key='searchterm')
 	{
 	    if($searchterm)
 	    {
-		$this->session->set_userdata('searchterm', $searchterm);
+		$this->session->set_userdata($key, $searchterm);
 		return $searchterm;
 	    }
-	    elseif($this->session->userdata('searchterm'))
+	    elseif($this->session->userdata($key))
 	    {
-		$searchterm = $this->session->userdata('searchterm');
+		$searchterm = $this->session->userdata($key);
 		return $searchterm;
 	    }
 	    else

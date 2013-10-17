@@ -31,8 +31,8 @@ class Timeline extends CI_Controller {
 		$this->load->library('app/paginationlib');
 
 		// This is the last name from the form
-		echo $Dfrom = $this->report_model->searchterm_handler($this->input->get_post('Dfrom', TRUE));
-		$Dto = $this->report_model->searchterm_handler($this->input->get_post('Dto', TRUE));		
+		$Dfrom = $this->report_model->searchterm_handler($this->input->get_post('Dfrom', TRUE),'Dfrom');
+		$Dto = $this->report_model->searchterm_handler($this->input->get_post('Dto', TRUE),'Dto');		
 		
 		try
 		{
