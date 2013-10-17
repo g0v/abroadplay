@@ -68,12 +68,7 @@
                                                         <h2 class="icon icon-news">Magazines</h2>
                                                         <a class="mp-back" href="#">back</a>
                                                         <ul>
-                                                                <li><a href="#">National Geographic</a></li>
-                                                                <li><a href="#">Scientific American</a></li>
-                                                                <li><a href="#">The Spectator</a></li>
-                                                                <li><a href="#">The Rambler</a></li>
-                                                                <li><a href="#">Physics World</a></li>
-                                                                <li><a href="#">The New Scientist</a></li>
+                                                                <li><a href="#">。</a></li>
                                                         </ul>
                                                 </div>
                                         </li>                                       
