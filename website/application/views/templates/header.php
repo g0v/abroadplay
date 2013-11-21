@@ -29,7 +29,7 @@
                         <div class="mp-level">
                                 <h2 class="icon icon-world">All Categories</h2>
                                 <ul>
-                                        <li class="icon icon-arrow-left">
+                                        <!--<li class="icon icon-arrow-left">
                                                 <a class="icon icon-display" href="#">報告查詢</a>
                                                 <div class="mp-level">
                                                     <h2 class="icon icon-display">Devices</h2>
@@ -57,11 +57,13 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                        </li>
+                                        </li>-->
                                         <li class="icon icon-arrow-left">
                                                 <a class="icon icon-shop" href="<?=base_url()?>report/">中央政府</a>                                            
                                         </li>
+                                        <!--
                                         <li><a class="icon icon-photo" href="#">地方政府</a></li>
+                                        -->
                                          <li class="icon icon-arrow-left">
                                                 <a class="icon icon-news" href="#">歷史統計</a>
                                                 <div class="mp-level">
