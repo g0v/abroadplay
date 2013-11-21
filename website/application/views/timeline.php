@@ -43,7 +43,10 @@
 		</tr>
 <?php foreach ($list as $k=>$item): ?>
     <tr <?=($k%2==0)?"class='even'":"";?>><td><?=$item->sysid ?></td><td><a href="<?=base_url()?>report/view/<?=$item->id ?>"><?=$item->reportName ?></a></td><td><?=$item->authority ?></td><td><?=$item->periodStart ?></td><td><?=$item->periodEnd ?></td><td><?=$item->countries ?></td><td><?=$item->people ?></td></tr>
-<?php endforeach ?>  		
+<?php endforeach ?>
+<?php if(count($list)==0):?>
+	<tr><td colspan="7"><div style="padding-top:30px;height:100px;text-align:center">目前尚無任何資料</div></td></tr>
+<?php endif;?>		
  	</table>
 	<?=$pageList?>
 	
