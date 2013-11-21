@@ -13,7 +13,7 @@ class Country extends CI_Controller {
 	public function index()
 	{
 		$Dfrom="20120101";
-		$Dfrom="20121231";
+		$Dto="20121231";
 		$data['title'] = '公務員出國考察追蹤網-國家統計';
 		$data['Dfrom'] = "{$Dfrom}";
 		$data['Dto'] = "{$Dto}";
