@@ -12,9 +12,10 @@ class Country extends CI_Controller {
 	}	
 	public function index()
 	{
-		$data['title'] = '公務員出國考察追蹤網';
-		$data['Dfrom'] = "";
-		$data['Dto'] = "";
+		$data['title'] = '公務員出國考察追蹤網-國家統計';
+		$data['Dfrom'] = "20100101";
+		$data['Dto'] = "20101231";
+		$data['list'] = $this->report_model->get_country($Dfrom,$Dto);
 		$this->load->view('templates/header', $data);
 		$this->load->view('country', $data);
 		$this->load->view('templates/footer', $data);
@@ -27,7 +28,7 @@ class Country extends CI_Controller {
 		
 		try
 		{
-			$data['title'] = '公務員出國考察追蹤網';
+			$data['title'] = '公務員出國考察追蹤網-國家統計';
 			$data['Dfrom'] = "{$Dfrom}";
 			$data['Dto'] = "{$Dto}";
 			$data['list'] = $this->report_model->get_country($Dfrom,$Dto);
