@@ -139,8 +139,6 @@ class Report_model extends CI_Model
 
 	public function searchterm_handler($searchterm,$key='searchterm')
 	{
-		echo $searchterm;
-		exit();
 	    if($searchterm)
 	    {
 			$this->session->set_userdata($key, $searchterm);
