@@ -137,6 +137,23 @@ class Report_model extends CI_Model
 		$query = $this->db->get();
 		
 		return $query->result();
+	}
+
+	//取得國家筆數
+	public function get_country($Dfrom = null,$Dto = null)
+	{
+		$this->db->select("count(*) as cnt,authority.name as cName");
+		$this->db->from('report');
+		$this->db->join('country', 'country.rId=report.id');
+		$this->db->join('authority', 'country.aId=authority.aId');
+		$this->db->where('report.periodStart >=',$Dfrom);
+		$this->db->where('report.periodEnd <=',$Dto);
+		$this->db->group_by("authority.name"); 
+		$this->db->order_by('cnt','desc');
+		$query = $this->db->get();
+		//$arr = $query->result();
+		//print_r($arr);
+		return $query->result();
 	}	
 
 	public function searchterm_handler($searchterm,$key='searchterm')
