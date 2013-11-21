@@ -49,11 +49,6 @@ class Report extends CI_Controller
 		$this->load->library('app/paginationlib');
 		try
 		{
-		
-			$this->session->set_userdata("Dfrom", "");	
-			$this->session->set_userdata("Dto", "");
-			$this->session->set_userdata("key", "")
-		
 			$data['title'] = '公務員出國考察追蹤網';
 			$data['list'] = $this->report_model->get_list($page);
 			$this->paginationlib->initPagination("report/lists",$this->report_model->get_count());
