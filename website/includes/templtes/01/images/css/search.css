@@ -28,11 +28,9 @@
 
  
 .form-datepicker input {
-    width: 200px;
+    width: 180px;
     height: 40px;
-    padding: 10px 5px;
-    float: left;    
-    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    padding: 10px 5px;    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 0;
     background: #eee;
     border-radius: 3px 0 0 3px;      
