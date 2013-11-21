@@ -7,13 +7,14 @@
         <h1>公務員出國考察追蹤網<span>追蹤公務員出國考察的、行程、人數</span></h1>
     </a>
 </header>
-<form class="form-wrapper cf" action="<?=base_url()?>report/search/" method="post">
+<form  action="<?=base_url()?>report/search/" method="post">
 	<input type="text" id="from" name="Dfrom" value="<?=$Dfrom?>" />
 	至
 	<input type="text" id="to" name="Dto" value="<?=$Dto?>" />    
-    
+    <div class="form-wrapper cf">
     <input type="text" placeholder="輸入查詢關鍵字..." name="key" value="<?=$key?>" required>
     <button type="submit">Search</button>
+    </div>
 </form>  
 <?=$pageList?>
 <table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
