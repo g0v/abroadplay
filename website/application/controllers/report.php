@@ -18,7 +18,7 @@ class Report extends CI_Controller
 		try
 		{
 			// This is the last name from the form
-			$key =	$this->report_model->searchterm_handler($this->input->get_post('key', TRUE));
+			$key =	$this->report_model->searchterm_handler($this->input->get_post('key', TRUE),'');
 			
 			$data['title'] = '公務員出國考察追蹤網';
 			
