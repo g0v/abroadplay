@@ -12,9 +12,11 @@ class Country extends CI_Controller {
 	}	
 	public function index()
 	{
+		$Dfrom="20120101";
+		$Dfrom="20121231";
 		$data['title'] = '公務員出國考察追蹤網-國家統計';
-		$data['Dfrom'] = "20100101";
-		$data['Dto'] = "20101231";
+		$data['Dfrom'] = "{$Dfrom}";
+		$data['Dto'] = "{$Dto}";
 		$data['list'] = $this->report_model->get_country($Dfrom,$Dto);
 		$this->load->view('templates/header', $data);
 		$this->load->view('country', $data);
