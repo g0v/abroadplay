@@ -32,7 +32,6 @@
     $( "#from" ).datepicker({
 	defaultDate: "+1w",
 	dateFormat: "yy-mm-dd",
-	changeMonth: true,
 	changeYear: true,
 	showAnim: "fadeIn",
 	yearRange: '1999:' + new Date().getFullYear(),
@@ -43,7 +42,6 @@
     $( "#to" ).datepicker({
 	defaultDate: "+1w",
 	dateFormat: "yy-mm-dd",
-	changeMonth: true,
 	changeYear: true,
 	showAnim: "fadeIn",
 	yearRange: '1999:' + new Date().getFullYear(),
