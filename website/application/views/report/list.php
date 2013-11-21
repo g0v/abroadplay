@@ -8,8 +8,7 @@
     </a>
 </header>
 <form class="form-wrapper cf" action="<?=base_url()?>report/search/" method="post">
-	<input type="text" placeholder="輸入查詢關鍵字..." name="key" value="<?=$key?>" required><br/>
-	<input type="text" id="from" name="Dfrom" value="<?=$Dfrom?>" />至<input type="text" id="to" name="Dto" value="<?=$Dto?>" />    
+    <input type="text" placeholder="輸入查詢關鍵字..." name="key" value="<?=$key?>" required>
     <button type="submit">Search</button>
 </form>  
 <?=$pageList?>
@@ -20,29 +19,3 @@
 <?php endforeach ?>   
 </table>
 <?=$pageList?>
-<script>
-  $(function() {
-    $( "#from" ).datepicker({
-	defaultDate: "+1w",
-	dateFormat: "yy-mm-dd",
-	changeMonth: true,
-	changeYear: true,
-	showAnim: "fadeIn",
-	yearRange: '1999:' + new Date().getFullYear(),
-	onClose: function( selectedDate ) {
-		$( "#to" ).datepicker( "option", "minDate", selectedDate );
-	}
-    });
-    $( "#to" ).datepicker({
-	defaultDate: "+1w",
-	dateFormat: "yy-mm-dd",
-	changeMonth: true,
-	changeYear: true,
-	showAnim: "fadeIn",
-	yearRange: '1999:' + new Date().getFullYear(),
-	onClose: function( selectedDate ) {
-		$( "#from" ).datepicker( "option", "maxDate", selectedDate );
-	}
-    });
-  });
-</script>
