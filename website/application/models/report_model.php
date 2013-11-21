@@ -34,7 +34,7 @@ class Report_model extends CI_Model
 	}
 
 	//取得搜索資料列表
-	public function get_search($key = null,$page = 1,$limit = 50)
+	public function get_search($key = null,$Dfrom = null,$Dto = null,$page = 1,$limit = 50)
 	{
 		
 		$this->db->select('report.*,authority.name as authority');
@@ -46,6 +46,10 @@ class Report_model extends CI_Model
 		$this->db->or_like('report.report',$key);
 		//$this->db->or_like('report.periodStart',$key);
 		//$this->db->or_like('report.periodEnd',$key);
+		if($Dfrom)
+		$this->db->where('report.periodStart >=',$Dfrom);
+		if($Dto)
+		$this->db->where('report.periodEnd <=',$Dto);
 		$this->db->or_like('authority.name',$key);
 		$this->count = $this->db->count_all_results();
 
@@ -64,6 +68,10 @@ class Report_model extends CI_Model
 		//$this->db->or_like('report.periodStart',$key);
 		//$this->db->or_like('report.periodEnd',$key);
 		$this->db->or_like('authority.name',$key);
+		if($Dfrom)
+		$this->db->where('report.periodStart >=',$Dfrom);
+		if($Dto)
+		$this->db->where('report.periodEnd <=',$Dto);
 		$this->db->order_by('report.reportDate','desc');
 		$this->db->limit($limit,$start);
 		$query = $this->db->get();

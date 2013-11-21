@@ -28,7 +28,7 @@ class Report extends CI_Controller
 			$data['Dfrom'] = "{$Dfrom}";
 			$data['Dto'] = "{$Dto}";			
 			$data['key'] = "{$key}";
-			$data['list'] = $this->report_model->get_search($key,$page);
+			$data['list'] = $this->report_model->get_search($key,$Dfrom,$Dto,$page);
 			$this->paginationlib->initPagination("report/search",$this->report_model->get_count());
 			$data['pageList']   = $this->pagination->create_links();		
 	
