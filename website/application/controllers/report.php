@@ -53,6 +53,8 @@ class Report extends CI_Controller
 			$data['list'] = $this->report_model->get_list($page);
 			$this->paginationlib->initPagination("report/lists",$this->report_model->get_count());
 			$data['pageList']   = $this->pagination->create_links();			
+			$data['Dfrom'] = "";
+			$data['Dto'] = "";			
 			$data['key'] = "";
 			$data['page'] = $page;
 			$this->load->view('templates/header', $data);
