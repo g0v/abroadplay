@@ -15,12 +15,10 @@ class Report extends CI_Controller
 	
 	public function search($page=1)
 	{
-		$this->load->library('pagination');
-		$this->load->library('app/paginationlib');
 		try
 		{
 			// This is the last name from the form
-			echo $key = $this->report_model->searchterm_handler($this->input->get_post('key', TRUE),'searchterm')
+			$key =	$this->report_model->searchterm_handler($this->input->get_post('key', TRUE));
 			
 			$data['title'] = '公務員出國考察追蹤網';
 			

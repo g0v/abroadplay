@@ -141,18 +141,18 @@ class Report_model extends CI_Model
 	{
 	    if($searchterm)
 	    {
-			$this->session->set_userdata($key, $searchterm);
-			return $searchterm;
+		$this->session->set_userdata($key, $searchterm);
+		return $searchterm;
 	    }
 	    elseif($this->session->userdata($key))
 	    {
-			$searchterm = $this->session->userdata($key);
-			return $searchterm;
+		$searchterm = $this->session->userdata($key);
+		return $searchterm;
 	    }
 	    else
 	    {
-			$searchterm ="";
-			return $searchterm;
+		$searchterm ="";
+		return $searchterm;
 	    }
 	}	
 }
