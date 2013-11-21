@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://hualien-fei-579973.middle2.me/website/';
+$config['base_url']	= 'http://' . $_SERVER['HTTP_HOST'] . '/website';
 
 /*
 |--------------------------------------------------------------------------
