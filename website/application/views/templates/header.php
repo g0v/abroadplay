@@ -62,9 +62,7 @@
                                                 <a class="icon icon-shop" href="<?=base_url()?>report/">中央政府</a>                                            
                                         </li>
                                         <!--
-                                        <li><a class="icon icon-photo" href="#">地方政府</a></li>
-                                        -->
-                                         <li class="icon icon-arrow-left">
+                                        <li><a class="icon icon-photo" href="#">地方政府</a></li>                                         <li class="icon icon-arrow-left">
                                                 <a class="icon icon-news" href="#">歷史統計</a>
                                                 <div class="mp-level">
                                                         <h2 class="icon icon-news">Magazines</h2>
@@ -73,7 +71,8 @@
                                                                 <li><a href="#">。</a></li>
                                                         </ul>
                                                 </div>
-                                        </li>                                       
+                                        </li>  
+                                        -->                                     
                                         <li><a class="icon icon-wallet" href="<?=base_url()?>timeline/">時間查找</a></li>
                                 </ul>
                                         

@@ -8,7 +8,8 @@
     </a>
 </header>
 <form class="form-wrapper cf" action="<?=base_url()?>report/search/" method="post">
-    <input type="text" placeholder="輸入查詢關鍵字..." name="key" value="<?=$key?>" required>
+	<input type="text" placeholder="輸入查詢關鍵字..." name="key" value="<?=$key?>" required><br/>
+	<input type="text" id="from" name="Dfrom" value="<?=$Dfrom?>" />至<input type="text" id="to" name="Dto" value="<?=$Dto?>" />    
     <button type="submit">Search</button>
 </form>  
 <?=$pageList?>
