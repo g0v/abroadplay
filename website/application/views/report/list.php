@@ -14,7 +14,7 @@
 	<input type="text" id="to" name="Dto" value="<?=$Dto?>" placeholder="結束日" />    
     </div>
     <div class="form-wrapper cf">
-    <input type="text" placeholder="輸入查詢關鍵字..." name="key" value="<?=$key?>">
+    <input type="text" placeholder="輸入查詢關鍵字..." name="key" value="<?=$key?>" required>
     <button type="submit">Search</button>
     </div>
 </form>  
@@ -30,8 +30,11 @@
 <script>
   $(function() {
     $( "#from" ).datepicker({
-	defaultDate: "+1w",
+	defaultDate : (new Date(new Date().getFullYear() - 20
+                                + "/01/01") - new Date())
+                                / (1000 * 60 * 60 * 24),
 	dateFormat: "yy-mm-dd",
+	changeMonth: true,
 	changeYear: true,
 	showAnim: "fadeIn",
 	yearRange: '1999:' + new Date().getFullYear(),
@@ -42,6 +45,7 @@
     $( "#to" ).datepicker({
 	defaultDate: "+1w",
 	dateFormat: "yy-mm-dd",
+	changeMonth: true,
 	changeYear: true,
 	showAnim: "fadeIn",
 	yearRange: '1999:' + new Date().getFullYear(),
