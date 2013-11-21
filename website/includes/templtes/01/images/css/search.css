@@ -28,12 +28,12 @@
 
  
 .form-datepicker input {
-    width: 180px;
+    width: 150px;
     height: 40px;
-    padding: 10px 5px;    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    padding: 10px 5px; font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 0;
     background: #eee;
-    border-radius: 3px 0 0 3px;      
+    border-radius: 3px;      
 }
  
 .form-datepicker input:focus {
