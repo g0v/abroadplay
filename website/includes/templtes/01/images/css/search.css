@@ -17,7 +17,7 @@
 /* Form wrapper styling */
 .form-datepicker {
     width: 450px;
-    padding: 0px;
+    padding: 5px;
     margin: 0 auto 0px auto;
     background: #444;
     background: rgba(0,0,0,.2);
