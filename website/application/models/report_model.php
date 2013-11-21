@@ -43,8 +43,11 @@ class Report_model extends CI_Model
 		if($Dfrom)
 		$this->db->where('report.periodStart >=',$Dfrom);
 		if($Dto)
-		if($key):
 		$this->db->where('report.periodEnd <=',$Dto);
+		if($key):
+		$where = "(report.name like '%$key%' or report.keyword like '%$key%' OR report.report like '%$key%' OR authority.name like '%$key%')";
+		$this->db->where($where);		
+		/*
 		$this->db->like('report.name',$key);
 		$this->db->or_like('report.sysid',$key);
 		$this->db->or_like('report.keyword',$key);
@@ -52,6 +55,7 @@ class Report_model extends CI_Model
 		//$this->db->or_like('report.periodStart',$key);
 		//$this->db->or_like('report.periodEnd',$key);
 		$this->db->or_like('authority.name',$key);
+		*/
 		endif;
 		$this->count = $this->db->count_all_results();
 
@@ -68,6 +72,9 @@ class Report_model extends CI_Model
 		if($Dto)
 		$this->db->where('report.periodEnd <=',$Dto);
 		if($key):
+		$where = "(report.name like '%$key%' or report.keyword like '%$key%' OR report.report like '%$key%' OR authority.name like '%$key%')";
+		$this->db->where($where);		
+		/*
 		$this->db->like('report.name',$key);
 		$this->db->or_like('report.sysid',$key);
 		$this->db->or_like('report.keyword',$key);
@@ -75,6 +82,7 @@ class Report_model extends CI_Model
 		//$this->db->or_like('report.periodStart',$key);
 		//$this->db->or_like('report.periodEnd',$key);
 		$this->db->or_like('authority.name',$key);
+		*/
 		endif;
 		$this->db->order_by('report.reportDate','desc');
 		$this->db->limit($limit,$start);
