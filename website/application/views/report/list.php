@@ -20,3 +20,29 @@
 <?php endforeach ?>   
 </table>
 <?=$pageList?>
+<script>
+  $(function() {
+    $( "#from" ).datepicker({
+	defaultDate: "+1w",
+	dateFormat: "yy-mm-dd",
+	changeMonth: true,
+	changeYear: true,
+	showAnim: "fadeIn",
+	yearRange: '1999:' + new Date().getFullYear(),
+	onClose: function( selectedDate ) {
+		$( "#to" ).datepicker( "option", "minDate", selectedDate );
+	}
+    });
+    $( "#to" ).datepicker({
+	defaultDate: "+1w",
+	dateFormat: "yy-mm-dd",
+	changeMonth: true,
+	changeYear: true,
+	showAnim: "fadeIn",
+	yearRange: '1999:' + new Date().getFullYear(),
+	onClose: function( selectedDate ) {
+		$( "#from" ).datepicker( "option", "maxDate", selectedDate );
+	}
+    });
+  });
+</script>
