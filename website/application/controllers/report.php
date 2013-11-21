@@ -15,6 +15,8 @@ class Report extends CI_Controller
 	
 	public function search($page=1)
 	{
+		$this->load->library('pagination');
+		$this->load->library('app/paginationlib');
 		try
 		{
 			// This is the last name from the form
