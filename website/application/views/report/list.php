@@ -30,7 +30,7 @@
 <script>
   $(function() {
     $( "#from" ).datepicker({
-	defaultDate : (new Date(new Date().getFullYear() - 20
+	defaultDate : (new Date(new Date().getFullYear() - 10
                                 + "/01/01") - new Date())
                                 / (1000 * 60 * 60 * 24),
 	dateFormat: "yy-mm-dd",

@@ -23,9 +23,9 @@
 	<b>搜尋查詢</b>
 	<div style="float:right">
 	<form class="form-wrapper cf" action="<?=base_url()?>timeline/datelimit/" method="post">
-	<input type="text" id="from" name="Dfrom" value="<?=$Dfrom?>" />
+	<input type="text" id="from" name="Dfrom" value="<?=$Dfrom?>" placeholder="開始日"/>
 	至
-	<input type="text" id="to" name="Dto" value="<?=$Dto?>" />
+	<input type="text" id="to" name="Dto" value="<?=$Dto?>" placeholder="結束日"/>
 	<input type="submit" value="送出" />
 	</form>
 	</div>
@@ -55,7 +55,9 @@
 <script>
   $(function() {
     $( "#from" ).datepicker({
-	defaultDate: "+1w",
+	defaultDate : (new Date(new Date().getFullYear() - 10
+                                + "/01/01") - new Date())
+                                / (1000 * 60 * 60 * 24),
 	dateFormat: "yy-mm-dd",
 	changeMonth: true,
 	changeYear: true,
