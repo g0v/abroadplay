@@ -20,10 +20,13 @@ class Report extends CI_Controller
 		try
 		{
 			// This is the last name from the form
+			$Dfrom = $this->report_model->searchterm_handler($this->input->get_post('Dfrom', TRUE),'Dfrom');
+			$Dto = $this->report_model->searchterm_handler($this->input->get_post('Dto', TRUE),'Dto');			
 			$key =	$this->report_model->searchterm_handler($this->input->get_post('key', TRUE));
 			
 			$data['title'] = '公務員出國考察追蹤網';
-			
+			$data['Dfrom'] = "{$Dfrom}";
+			$data['Dto'] = "{$Dto}";			
 			$data['key'] = "{$key}";
 			$data['list'] = $this->report_model->get_search($key,$page);
 			$this->paginationlib->initPagination("report/search",$this->report_model->get_count());
