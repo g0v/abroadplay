@@ -14,15 +14,26 @@ class Timeline extends CI_Controller {
 	{
 		$this->load->library('pagination');
 		$this->load->library('app/paginationlib');
-
-		$data['title'] = '公務員出國考察追蹤網TimeLine';
-		$data['Dfrom'] = "";
-		$data['Dto'] = "";
-		$data['list'] = array();
-		$data['pageList']   = $this->pagination->create_links();	
-		$this->load->view('templates/header', $data);
-		$this->load->view('timeline', $data);
-		$this->load->view('templates/footer', $data);
+		try
+		{
+			$Dfrom="2012-01-01";
+			$Dto="2012-12-31";
+			$data['title'] = '公務員出國考察追蹤網TimeLine';
+			$data['Dfrom'] = "{$Dfrom}";
+			$data['Dto'] = "{$Dto}";
+			$data['list'] = $this->report_model->get_datelimit($Dfrom,$Dto);
+			$this->paginationlib->initPagination("timeline/datelimit",$this->report_model->get_count());
+			$data['pageList']   = $this->pagination->create_links();	
+			$data['pageList']   = $this->pagination->create_links();	
+			$this->load->view('templates/header', $data);
+			$this->load->view('timeline', $data);
+			$this->load->view('templates/footer', $data);
+		}
+		catch (Exception $err)
+		{
+		    log_message("error", $err->getMessage());
+		    return show_error($err->getMessage());
+		}
 		
 	}	
 	public function datelimit($page=1)
