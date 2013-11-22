@@ -11,7 +11,7 @@ class Report extends CI_Controller
 	public function index()
 	{
 		redirect(base_url().'report/lists/', 'refresh');
-	
+		echo 123;
 	}
 }
 
