@@ -70,19 +70,24 @@ class Report extends CI_Controller
 
 	public function view($id)
 	{
-		$data['item'] = $this->report_model->get_report($id);
-	
-		if (empty($data['item']))
+		if($id)
 		{
-			log_message("error", $err->getMessage());
-			return show_error($err->getMessage());
+			$data['item'] = $this->report_model->get_report($id);
+	
+			if (empty($data['item']))
+			{
+				log_message("error", $err->getMessage());
+				return show_error($err->getMessage());
+			}
+	
+			$data['title'] = $data['item']['sysid'].'-'.$data['item']['reportName'];
+	
+			$this->load->view('templates/header', $data);
+			$this->load->view('report/view', $data);
+			$this->load->view('templates/footer');
 		}
-	
-		$data['title'] = $data['item']['sysid'].'-'.$data['item']['reportName'];
-	
-		$this->load->view('templates/header', $data);
-		$this->load->view('report/view', $data);
-		$this->load->view('templates/footer');
+		else
+			redirect(base_url().'report/lists/', 'refresh');
 	}
 }
 
