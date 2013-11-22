@@ -68,9 +68,9 @@ class Report extends CI_Controller
 		}		
 	}	
 
-	public function view($id)
+	public function view($id=null)
 	{
-		if($id)
+		if($id!='')
 		{
 			$data['item'] = $this->report_model->get_report($id);
 	
