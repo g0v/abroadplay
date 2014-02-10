@@ -37,7 +37,7 @@
 		var data = google.visualization.arrayToDataTable([
 			['國家', '次數'],
 			<?php foreach ($list as $k=>$item): ?>
-			['<?=$item->cName ?>', <?=$item->cnt ?>],
+			['<?=(($item->cName=='中國大陸')?"中國":$item->cName)?>', <?=$item->cnt ?>],
 			<?php endforeach ?>
 		]);
 		var geochart = new google.visualization.GeoChart(document.getElementById('visualization'));
@@ -50,7 +50,7 @@
 <a href="<?=base_url()?>" title="公務員出國考察追蹤網-Home">
 	<h1>公務員出國考察追蹤網<span>追蹤公務員出國考察的、行程、人數</span></h1>
 </a>
-</header>
+</header>123
 <div id="main">
 	<div class="content">
 		<b>國家統計</b>
