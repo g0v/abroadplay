@@ -47,6 +47,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
+if (!getenv('DATABASE_URL')) {
+    die('need DATABASE_URL');
+}
+
 if (!preg_match('#mysql://([^:]*):([^@]*)@([^/]*)/(.*)#', strval(getenv('DATABASE_URL')), $matches)) {
     die('mysql only');
 }
