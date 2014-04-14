@@ -2,7 +2,6 @@
 
 class Tool extends CI_Controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -13,6 +12,7 @@ class Tool extends CI_Controller
 	}
 	public function lists($page=1)
 	{
+
 		$data = $this->report_model->get_list($page);
 		foreach ($data as $value) {
 			$this->getContentview($value->id);
@@ -20,6 +20,7 @@ class Tool extends CI_Controller
 		echo "OK-$page";
 		if($page<700)
 		redirect(base_url().'tool/lists/'.($page+1), 'refresh');
+
 	}
 
 	public function getContentview($id=null)
@@ -47,7 +48,7 @@ class Tool extends CI_Controller
 			//$data = array($vname => $value);
 			$this->db->update('report',$data,"id ='$id'");
 		endif;
-	}
+	}	
 	public function gethtml($url){
 		// 初始化一個 cURL 對象
 		$ch = @curl_init();
