@@ -115,6 +115,7 @@ class Report_model extends CI_Model
 	//取得搜索資料列表
 	public function get_datelimit($Dfrom = null,$Dto = null,$page = 1,$limit = 50)
 	{
+
 		$this->db->select('report.*,authority.name as authority');
 		$this->db->from('report');
 		$this->db->join('authority', 'report.authority=authority.aId');

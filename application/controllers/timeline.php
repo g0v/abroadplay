@@ -22,6 +22,7 @@ class Timeline extends CI_Controller {
 			$data['Dfrom'] = "{$Dfrom}";
 			$data['Dto'] = "{$Dto}";
 			$data['list'] = $this->report_model->get_datelimit($Dfrom,$Dto);
+			//print_r($data['list']);
 			$this->paginationlib->initPagination("timeline/datelimit",$this->report_model->get_count());
 			$data['pageList']   = $this->pagination->create_links();	
 			$data['pageList']   = $this->pagination->create_links();	
