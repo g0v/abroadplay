@@ -10,45 +10,73 @@ class Tool extends CI_Controller
 		$this->load->model('report_model');
 
 	}
-	public function lists($page=1)
+	public function lists()
 	{
+		exit;
+		$url="http://report.nat.gov.tw/ReportFront/report_category.jspx?cateType=2&categoryId=1";
+		$html = $this->gethtml($url);
+		preg_match_all("/<ul.*?>(.*?)<\/[\s]*ul>/si", $html, $ul);
+		preg_match_all("/<a.*?href=\"(.*?)\".*?>(.*?)<\/a>/si", $ul[0][5], $temp);
+		$list = $temp[1];
+		foreach ($list as $key => $value) {
+			$url = "http://report.nat.gov.tw/ReportFront/{$value}";
 
-		$data = $this->report_model->get_list($page);
-		foreach ($data as $value) {
-			$this->getContentview($value->id);
+			$catearr = array(
+				'cateType'=>'2',
+				'cateName'=>html_entity_decode(trim($temp[2][$key])),
+				'cateLevel'=>'1',
+				'cateBid'=>'0',
+			);
+			$this->db->insert('category', $catearr);
+			$bid = $this->db->insert_id();
+
+			$list1 = $this->gethtml2($url);
+
+			foreach ($list1 as $key1 => $value1) 
+			{
+				$catearr = array(
+					'cateType'=>'2',
+					'cateName'=>html_entity_decode(trim($value1['title'])),
+					'cateLevel'=>'2',
+					'cateBid'=>$bid,
+				);
+				$this->db->insert('category', $catearr);
+				$bid2 = $this->db->insert_id();	
+
+				foreach ($value1['list'] as $value2) 
+				{
+					$catearr = array(
+						'cateType'=>'2',
+						'cateName'=>html_entity_decode(trim($value2)),
+						'cateLevel'=>'3',
+						'cateBid'=>$bid2,
+					);
+					$this->db->insert('category', $catearr);								
+				}
+
+
+			}
+			//$arr[] = $this->gethtml2($url);
 		}
-		echo "OK-$page";
-		if($page<700)
-		redirect(base_url().'tool/lists/'.($page+1), 'refresh');
+		//print_r($arr);
 
 	}
-
-	public function getContentview($id=null)
+	public function gethtml2($url)
 	{
-		$data = $this->report_model->get_report($id);
-		//print_r($data);
-		$html = $this->gethtml($data['source']);	
-		/*
-		$set = "/<table.*?>.*?<\/[\s]*table>/si";
-		*/
-		$set = "/<td.*?>(.*?)<\/[\s]*td>/si";
-		preg_match_all($set, $html, $matches);
-		//計畫名稱
-		$name = trim(strip_tags($matches[1][1]));
-		//報告名稱
-		$reportName = trim($matches[1][2]);				
-		preg_match_all("/<p.*?>(.*?)<\/[\s]*p>/si", $html, $matches);
-		//print_r($matches);exit;
-		$data = array('report' => $matches[1][0],'name'=>$name,'reportName'=> $reportName);
-		$this->upreport($id,$data);
+		
+		$html = $this->gethtml($url);
+		preg_match_all("/<h3.*?><a.*?>(.*?)<\/a><\/[\s]*h3>/si", $html, $h3_matches);
+		$title=$h3_matches[1];
+		preg_match_all("/<\/[\s]*h3>.*?<ul.*?>(.*?)<\/[\s]*ul>/si", $html, $ul_matches);
+		//print_r($ul_matches[1]);
+		$category;
+		foreach ($ul_matches[1] as $key=>$value) {
+			$temp = array();
+			preg_match_all("/<a.*?>(.*?)<\/a>/si", $value, $temp);
+			$category[]=array('title' => $title[$key],'list'=> $temp[1]);
+		}
+		return $category;
 	}
-	public function upreport($id=null,$data)
-	{
-     	if($id!='14041'&&$id!='15042'):
-			//$data = array($vname => $value);
-			$this->db->update('report',$data,"id ='$id'");
-		endif;
-	}	
 	public function gethtml($url){
 		// 初始化一個 cURL 對象
 		$ch = @curl_init();
