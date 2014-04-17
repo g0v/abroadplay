@@ -196,7 +196,7 @@ if (defined('ENVIRONMENT'))
  * SET SQL DATABASE_URL
  * --------------------------------------------------------------------
  */
-	putenv('DATABASE_URL=mysql://root:ewfixoji@127.0.0.1/abroadplay');
+//	putenv('DATABASE_URL=mysql://root:ewfixoji@127.0.0.1/abroadplay');
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
