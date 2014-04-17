@@ -5,7 +5,7 @@
 $(function(){
     try{
 	COUNTRYMapper.initializeMap("map-canvas",2);
-	var countryArray = [<?php foreach ($item['country'] as $v): ?>"<?=$v->name?>",<?php endforeach ?>];
+	var countryArray = [<?php foreach ($item['country'] as $v): ?>"<?=($v->name=='中國大陸')?'中國':$v->name?>",<?php endforeach ?>];
         COUNTRYMapper.addCOUNTRYArray(countryArray);
     } catch(e){
 	//handle error
