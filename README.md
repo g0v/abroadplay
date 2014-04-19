@@ -12,4 +12,4 @@
 ##使用方式##
 
 1. 修改DB設定
-  - 請先將abroadplay.sql匯入MySQL，再修改application/config/database.php裡面的MySQL連線設定。
+  - 請先將abroadplay.sql匯入MySQL，再修改index.php裡面的MySQL連線設定。
