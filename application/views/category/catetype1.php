@@ -9,13 +9,13 @@
 	<?php foreach ($list as $k=>$item): ?>
 		
 		<h3><?=$item['name']?></h3>
-		<?php if(count($item['list'])>0):?>
+		<?php if(count($item['list'])>1): ?>
 		<ul>
 			<?php foreach ($item['list'] as $v): ?>
 				<li><?=$v?></li>
 			<?php endforeach ?>
 		</ul>
-		<?php endif;?>
+		<?php endif; ?>
 		<div style="clear:both"></div>
 	<?php endforeach ?>
 	</td></tr>
