@@ -9,7 +9,7 @@
 	<?php foreach ($list as $k=>$item): ?>
 		
 		<h3><?=$item['name']?></h3>
-		<?php if(count($item['list'])):?>
+		<?php if(count($item['list'])>0):?>
 		<ul>
 			<?php foreach ($item['list'] as $v): ?>
 				<li><?=$v?></li>
