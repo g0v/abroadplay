@@ -9,11 +9,13 @@
 	<?php foreach ($list as $k=>$item): ?>
 		
 		<h3><?=$item['name']?></h3>
+		<?php if(count($item['list'])):?>
 		<ul>
 			<?php foreach ($item['list'] as $v): ?>
 				<li><?=$v?></li>
 			<?php endforeach ?>
 		</ul>
+		<?php endif;?>
 		<div style="clear:both"></div>
 	<?php endforeach ?>
 	</td></tr>
