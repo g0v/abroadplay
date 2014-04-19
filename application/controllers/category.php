@@ -21,7 +21,12 @@ class Category extends CI_Controller
 				$list = $this->getlist($value->id,1);
 				$temp ='';
 				foreach ($list as $value1) {
-					$temp[] = $value1->cateName;
+					$cateId = $value1->id;
+					$this->db->from('report');
+					$this->db->where('scId2',$cateId);	
+					$count = $this->db->count_all_results();
+
+					$temp[] = array("name"=>$value1->cateName,"url"=>"/category/catelist/1_".$cateId."_1","count"=>$count);
 				}
 				$arr[] = array('name'=>$value->cateName,'list'=>$temp );
 			}
@@ -76,6 +81,75 @@ class Category extends CI_Controller
 		    return show_error($err->getMessage());
 		}
 	}
+
+	public function catelist($set="1_1_1")
+	{
+		$this->load->library('pagination');
+		$this->load->library('app/paginationlib');		
+		try
+		{
+			$limit = 50;
+			$temp = explode('_', $set);
+			$cateType = $temp[0];
+			$cateId = $temp[1];
+			$page = ($temp[2])?$temp[2]:'1';
+
+
+			$this->db->from('category');
+			$this->db->where('id =',$cateId);
+			$query = $this->db->get();	
+			$cateName = $query->result();
+
+			$this->db->from('category');
+			$this->db->where('id =',$cateName[0]->cateBid);
+			$query = $this->db->get();	
+			$tcateName = $query->result();
+
+			$this->db->from('report');
+			if($cateType==1)
+				$this->db->where('scId2',$cateId);
+			else
+				$this->db->where('pcId',$cateId);
+			
+			$count = $this->db->count_all_results();
+			
+			$start = ($page-1)*$limit;
+
+			$this->db->select('report.*,authority.name as authority');
+			$this->db->from('report');
+			$this->db->join('authority', 'report.authority=authority.aId');			
+			if($cateType==1)
+				$this->db->where('report.scId2',$cateId);
+			else
+				$this->db->where('report.pcId',$cateId);
+
+			$this->db->order_by('report.reportDate','desc');
+			$this->db->limit($limit,$start);
+			$query = $this->db->get();
+			
+			$data['list'] = $query->result();
+
+			//print_r($data['list']);
+
+			$data['title'] = '公務員出國考察追蹤網';
+			
+			$this->paginationlib->initPagination("category/catelist",$count);
+			$data['pageList']   = $this->pagination->create_links();
+			$data['cateName'] = $cateName;
+			$data['tcateName'] = $tcateName;
+
+	
+			$this->load->view('templates/header', $data);
+			$this->load->view('category/list', $data);
+			$this->load->view('templates/footer');	    
+		}
+		catch (Exception $err)
+		{
+		    log_message("error", $err->getMessage());
+		    return show_error($err->getMessage());
+		}
+	}
+
 	public function gethtml($url){
 		// 初始化一個 cURL 對象
 		$ch = @curl_init();

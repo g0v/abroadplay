@@ -12,7 +12,7 @@
 		<?php if(count($item['list'])>1): ?>
 		<ul>
 			<?php foreach ($item['list'] as $v): ?>
-				<li><?=$v?></li>
+				<li><a href="<?=$v['url']?>"><?=$v['name']?>(<?=$v['count']?>)</a></li>
 			<?php endforeach ?>
 		</ul>
 		<?php endif; ?>
