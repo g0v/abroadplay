@@ -8,8 +8,8 @@
     <tr>	
 	    <td>
 	    	<ul>
-			<?php foreach ($list as $k=>$item): ?>
-				<li><a href="#<?=$item['id']?>"><?=$item['name']?></a></li>				
+			<?php foreach ($cateList as $k=>$item): ?>
+				<li><a href="/category/catetype/<?=$item->id?>"><?=$item->cateName?></a></li>				
 			<?php endforeach ?>
 			</ul>
 	    </td>
@@ -17,22 +17,17 @@
     <tr>
     	<td>
 			<?php foreach ($list as $k=>$item): ?>
-				<h3 id="<?=$item['id']?>"><?=$item['name']?></h3>
+				<a href="<?=$item['url']?>"><h3 id="<?=$item['id']?>"><?=$item['name']?>(<?=$item['count']?>)</h3></a>
+				<ul>
 				<?php foreach ($item['list'] as $list1): ?>
-					<h4><?=$list1['name']?></h4>
-					<? if(count($list1['list'])>0):?>
-					<ul>
-						<?php foreach ($list1['list'] as $v): ?>
-							<li><?=$v?></li>
-						<?php endforeach ?>
-					</ul>
-					<div style="clear:both"></div>
-					<?php endif ?>
+					<li><a href="<?=$list1['url']?>"><?=$list1['name']?>(<?=$list1['count']?>)</a></li>
 				<?php endforeach ?>
+				</ul>
 				<div style="clear:both"></div>
 			<?php endforeach ?>
 		</td>
 	</tr>
+
 </table>
 
 <style>

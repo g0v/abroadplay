@@ -44,31 +44,36 @@ class Category extends CI_Controller
 		    return show_error($err->getMessage());
 		}
 	}
-	public function catetype()
+	public function catetype($set=1)
 	{
 		try
 		{
 			$arr = array();
-			$temp = $this->getlist(0,2);
+			$temp = $this->getlist($set,2);
 			foreach ($temp as $key=>$value) {
 				$list = $this->getlist($value->id,2);
 				if(count($list)>0):
 					$temp =null;
 					foreach ($list as $value1) 
 					{
-						$list1 = $this->getlist($value1->id,2);
-						$temp1 = null;
-						if(count($list1)>0):							
-							foreach ($list1 as $value2)
-								$temp1[] = $value2->cateName;							
-						endif;
-						$temp[] = array('name'=>$value1->cateName,'list'=>$temp1);
+						$cateId = $value1->id;
+						$this->db->from('report');
+						$this->db->where('pcId',$cateId);
+						$count = $this->db->count_all_results();	
+						$temp[] = array('name'=>$value1->cateName,"url"=>"/category/catelist/2_".$cateId."_1","count"=>$count);
 					}
-					$arr[] = array('id'=>$value->id,'name'=>$value->cateName,'list'=>$temp );
+
+					$cateId = $value->id;
+					$this->db->from('report');
+					$this->db->where('pcId',$cateId);
+					$count = $this->db->count_all_results();	
+
+					$arr[] = array('id'=>$value->id,'name'=>$value->cateName,'count','list'=>$temp,'url'=>"/category/catelist/2_".$cateId."_1","count"=>$count );
+					//print_r($arr);exit;
 				endif;
 			}
-			//print_r($arr);
 			$data['title'] = '公務員出國考察追蹤網';
+			$data['cateList'] = $this->getlist(0,2);
 			$data['list'] = $arr;	
 	
 			$this->load->view('templates/header', $data);
@@ -93,7 +98,6 @@ class Category extends CI_Controller
 			$cateType = $temp[0];
 			$cateId = $temp[1];
 			$page = ($temp[2])?$temp[2]:'1';
-
 
 			$this->db->from('category');
 			$this->db->where('id =',$cateId);
@@ -167,7 +171,7 @@ class Category extends CI_Controller
 		return $Contents = curl_exec($ch);
 	}
 
-	public function getlist($id,$cateType){
+	public function getlist($id=0,$cateType=1){
 		$this->db->from('category');
 		$this->db->where('cateType =',$cateType);
 		$this->db->where('cateBid =',$id);
