@@ -67,8 +67,9 @@
                                                         <a class="mp-back" href="#">back</a>
                                                         <ul>
                                                             <li><a class="icon icon-news" href="<?=base_url()?>report/">報告查找</a></li>
-                                                            <li><a class="icon icon-news" href="<?=base_url()?>category/">主題分類</a></li>
+                                                            <!--<li><a class="icon icon-news" href="<?=base_url()?>category/">主題分類</a></li>
                                                             <li><a class="icon icon-news" href="<?=base_url()?>category/catetype/">施政分類</a></li>
+                                                            -->
                                                             <li><a class="icon icon-wallet" href="<?=base_url()?>timeline/">時間查找</a></li>
                                                             <li><a class="icon icon-world" href="<?=base_url()?>country/">國家統計</a></li>                                                                
                                                         </ul>
