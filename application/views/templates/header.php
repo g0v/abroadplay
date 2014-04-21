@@ -71,7 +71,6 @@
                                                             <li><a class="icon icon-world" href="<?=base_url()?>country/">國家統計</a></li>                                                                
                                                         </ul>
                                                 </div>
-
                                         </li>                                                 
                                                                         
                                         
@@ -81,7 +80,17 @@
                                                     <h2 class="icon icon-news">地方政府</h2>
                                                     <a class="mp-back" href="#">back</a>
                                                     <ul>
-                                                        <li><a class="icon icon-news" href="#">台北市</a></li>
+                                                        <li><a class="icon icon-news" href="#">台北市</a>
+                                                            <div class="mp-level">
+                                                                    <h2 class="icon icon-news">台北市</h2>
+                                                                    <a class="mp-back" href="#">back</a>
+                                                                    <ul>
+                                                                        <li><a class="icon icon-news" href="#">報告查找</a></li>
+                                                                        <li><a class="icon icon-wallet" href="#">時間查找</a></li>
+                                                                        <li><a class="icon icon-world" href="#">國家統計</a></li>                                                                
+                                                                    </ul>
+                                                            </div>
+                                                        </li>
                                                         <li><a class="icon icon-wallet" href="#">新北市</a></li>
                                                         <li><a class="icon icon-world" href="#">台中市</a></li>                                                                
                                                     </ul>
