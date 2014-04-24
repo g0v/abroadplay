@@ -8,13 +8,20 @@ class Abroad extends CI_Controller
 		$this->load->helper('url');
 		$this->load->model('report_model');
 	}
+
+	public function index()
+	{
+		$this->lists(1);
+	}
+
+
 	public function search()
 	{
 		$key =	$this->input->get_post('key', TRUE);
 		redirect(base_url()."abroad/view/".urlencode($key), 'refresh');
 	}
 
-	public function index($page=1)
+	public function lists($page=1)
 	{
 		$this->load->library('pagination');
 		$this->load->library('app/paginationlib');
@@ -47,7 +54,7 @@ class Abroad extends CI_Controller
 
 			$data['list'] = $query->result();
 			//print_r($data['list']);exit;
-			$this->paginationlib->initPagination("abroad/",$count,$page);
+			$this->paginationlib->initPagination("abroad/lists/",$count);
 			$data['pageList']   = $this->pagination->create_links();			
 			$data['key'] = "";
 			$data['page'] = $page;
