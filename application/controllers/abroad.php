@@ -51,7 +51,7 @@ class Abroad extends CI_Controller
 			$data['pageList']   = $this->pagination->create_links();			
 			$data['key'] = "";
 			$data['page'] = $page;
-			$data['title'] = '公務員出國考察追蹤網';
+			$data['title'] = '出國考察統計－公務員出國考察追蹤網';
 			$this->load->view('templates/header', $data);
 			$this->load->view('abroad/index', $data);
 			$this->load->view('templates/footer');		    
