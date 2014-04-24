@@ -15,7 +15,7 @@
 </form>  
 <?=$pageList?>
 <table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
-    <tr><th width="80">出國次數</th><th width="120">姓名</th><th width="30%">服務機關</th><th>服務單位</th><th width="120">職稱</th><th width="120">官職等</th></tr>
+    <tr><th width="150">出國次數</th><th width="120">姓名</th><th width="20%">服務機關</th><th>服務單位</th><th width="120">職稱</th><th width="120">官職等</th></tr>
 <?php foreach ($list as $k=>$item): ?>
     <tr <?=($k%2==0)?"class='even'":"";?>><td><?=$item->acounts?></td><td><a href="<?=base_url()?>abroad/view/<?=$item->name?>"><?=$item->name?></a></td><td><?=$item->agencies?></td><td><?=$item->units ?></td><td><?=$item->title ?></td><td><?=$item->official ?></td></tr>
 <?php endforeach ?>   
