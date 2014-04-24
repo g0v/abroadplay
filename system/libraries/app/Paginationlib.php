@@ -9,9 +9,10 @@ class Paginationlib {
           $this->ci =& get_instance();
      }
      
-     public function initPagination($base_url,$total_rows){
+     public function initPagination($base_url,$total_rows,$cur_page='1'){
          $config['base_url']          = base_url().$base_url;
          $config['total_rows']        = $total_rows;
+         $config['cur_page']          = $cur_page;
          $this->ci->pagination->initialize($config);
          return $config;    
      }  

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Category extends CI_Controller
+class Authority extends CI_Controller
 {
 	public function __construct()
 	{
@@ -16,26 +16,27 @@ class Category extends CI_Controller
 		try
 		{
 			$arr = array();
-			$temp = $this->getlist(0,1);
+			$temp = $this->getlist(0);
+			//print_r($temp);
 			foreach ($temp as $key=>$value) {
-				$list = $this->getlist($value->id,1);
+				$list = $this->getlist($value->group_id,2);
 				$temp ='';
 				foreach ($list as $value1) {
-					$cateId = $value1->id;
-					$this->db->from('report');
-					$this->db->where('scId2',$cateId);	
-					$count = $this->db->count_all_results();
-
-					$temp[] = array("name"=>$value1->cateName,"url"=>"/category/catelist/1_".$cateId."_1","count"=>$count);
+					$list2 = $this->getlist($value1->group_id,2);
+					$temp2 = "";
+					foreach ($list2 as $value2) {
+						$temp2[] = array("name"=>$value2->org_name,"url"=>"" );
+					}
+					$temp[] = array("name"=>$value1->org_name,"url"=>"","list"=>$temp2);
 				}
-				$arr[] = array('name'=>$value->cateName,'list'=>$temp );
+				$arr[] = array('name'=>$value->org_name,'list'=>$temp );
 			}
 			//print_r($arr);
 			$data['title'] = '公務員出國考察追蹤網';
 			$data['list'] = $arr;	
 	
 			$this->load->view('templates/header', $data);
-			$this->load->view('category/catetype1', $data);
+			$this->load->view('authority/index', $data);
 			$this->load->view('templates/footer');	    
 		}
 		catch (Exception $err)
@@ -87,7 +88,7 @@ class Category extends CI_Controller
 		}
 	}
 
-	public function catelist($set="1_1",$page="1")
+	public function catelist($set="1_1_1")
 	{
 		$this->load->library('pagination');
 		$this->load->library('app/paginationlib');		
@@ -97,7 +98,7 @@ class Category extends CI_Controller
 			$temp = explode('_', $set);
 			$cateType = $temp[0];
 			$cateId = $temp[1];
-			$page = ($page)?$page:'1';
+			$page = ($temp[2])?$temp[2]:'1';
 
 			$this->db->from('category');
 			$this->db->where('id =',$cateId);
@@ -137,10 +138,8 @@ class Category extends CI_Controller
 
 			$data['title'] = '公務員出國考察追蹤網';
 			
-			$this->paginationlib->initPagination("category/catelist/{$cateType}_{$cateId}",$count,$page);
+			$this->paginationlib->initPagination("category/catelist",$count);
 			$data['pageList']   = $this->pagination->create_links();
-
-
 			$data['cateName'] = $cateName;
 			$data['tcateName'] = $tcateName;
 
@@ -156,28 +155,11 @@ class Category extends CI_Controller
 		}
 	}
 
-	public function gethtml($url){
-		// 初始化一個 cURL 對象
-		$ch = @curl_init();
-		$options = array(
-						CURLOPT_URL => $url,// 設置你需要抓取的URL
-						//CURLOPT_REFERER => $referer,
-						CURLOPT_HEADER => false,// 設置header
-						CURLOPT_RETURNTRANSFER => true,// 設置cURL 參數，要求結果保存到字符串中還是輸出到屏幕上。
-						CURLOPT_USERAGENT => "Google Bot",
-						CURLOPT_FOLLOWLOCATION => true,	
-						//CURLOPT_CONNECTTIMEOUT  => $timeout,	
-						//CURLOPT_COOKIE => $cookie
-				   );
-		curl_setopt_array($ch, $options);
-		return $Contents = curl_exec($ch);
-	}
-
-	public function getlist($id=0,$cateType=1){
-		$this->db->from('category');
-		$this->db->where('cateType =',$cateType);
-		$this->db->where('cateBid =',$id);
-		$this->db->order_by('id','asc');
+	public function getlist($id=0,$level=1){
+		$this->db->from('orginfo');
+		$this->db->where('director_id',$id);
+		$this->db->where('org_level',$level);
+		$this->db->order_by('group_id','asc');
 		$query = $this->db->get();	
 		return $query->result();
 	}
