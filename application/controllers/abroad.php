@@ -15,7 +15,7 @@ class Abroad extends CI_Controller
 	}
 
 
-	public function search($key,$page=1)
+	public function search($key='',$page=1)
 	{
 
 		if($key==''):
@@ -47,6 +47,7 @@ class Abroad extends CI_Controller
 			$this->db->join('authority a1', 'abroad.agencies=a1.aId');
 			$this->db->join('authority a2', 'abroad.units=a2.aId');
 			$this->db->where('abroad.name',urldecode($key));
+			$this->db->group_by('abroad.agencies');
 			$this->db->group_by('abroad.name');
 			$this->db->order_by('acounts','desc');
 			$this->db->order_by('abroad.agencies','asc');
@@ -93,11 +94,14 @@ class Abroad extends CI_Controller
 
 			$start = ($page-1)*$limit;
 
-			$this->db->select('abroad.*,a1.name as agencies,a2.name as units,count(abroad.rId) acounts');
+
+
+			$this->db->select('abroad.*,a1.name as agencies,a2.name as units,count(abroad.name) acounts');
 			$this->db->from('abroad');	
 			$this->db->join('authority a1', 'abroad.agencies=a1.aId');
 			$this->db->join('authority a2', 'abroad.units=a2.aId');
-			$this->db->group_by('abroad.name','abroad.agencies');
+			$this->db->group_by('abroad.agencies');
+			$this->db->group_by('abroad.name');
 			$this->db->order_by('acounts','desc');
 			$this->db->order_by('abroad.agencies','asc');
 			//$this->db->order_by('abroad.name','asc');
