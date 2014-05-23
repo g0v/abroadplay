@@ -2,11 +2,12 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>includes/pagination/pagination.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>includes/templtes/01/images/css/search.css" />
 
-<header class="codrops-header">
+<div class="jumbotron">
     <a href="<?=base_url()?>" title="公務員出國考察追蹤網-Home">
         <h1>公務員出國考察追蹤網<span>追蹤公務員出國考察的、行程、人數</span></h1>
     </a>
-</header>
+</div>
+
 <form  action="<?=base_url()?>report/search/" method="post">
 	<div class="form-datepicker cf">
 	<input type="text" id="from" name="Dfrom" value="<?=$Dfrom?>" placeholder="開始日" />
