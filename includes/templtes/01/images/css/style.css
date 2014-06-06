@@ -60,6 +60,7 @@ table {border-spacing: 0; } /* IMPORTANT, I REMOVED border-collapse: collapse; F
 body {
 	background: #34495e;
 	color: #fff;
+	padding-top: 20px;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
